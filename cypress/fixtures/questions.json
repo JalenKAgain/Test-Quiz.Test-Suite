@@ -1,11 +1,11 @@
 [
     {
-      "question": "Why don’t Python programmers get bitten?",
+      "question": "What are the five lakes of Michigan?",
       "answers": [
-        { "text": "Because they handle exceptions!", "isCorrect": true },
-        { "text": "They use anti-venom variables", "isCorrect": false },
-        { "text": "They code with snake charmers", "isCorrect": false },
-        { "text": "Because their code is venom-proof", "isCorrect": false }
+        { "text": "Lake Huron, Lake Omaha, Lake Mead, Lake Erie, Lake Saleem!", "isCorrect": false },
+        { "text": "Lake Huron, Lake Ontario, Lake Michigan, Lake Erie, Lake Superior!", "isCorrect": true },
+        { "text": "Lake Huron, Lake Ontario, Lake Mead, Lake Erie, Lake Saleem!", "isCorrect": false },
+        { "text": "Lake Hughley, Lake Omaha, Lake Mead, Lake Ernestine, Lake Saleem!", "isCorrect": false }
       ]
     }
   ]
