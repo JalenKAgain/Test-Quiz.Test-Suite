@@ -1,28 +1,48 @@
-import React from 'react';
-import Quiz from '../client/src/components/Quiz';
+import Quiz from "../../client/src/components/Quiz"
 
-describe('<Quiz />', () => {
+describe('Quiz Component', () => {
   beforeEach(() => {
     cy.intercept({
-      method: 'GET',
-      url: '/api/questions/random'
-    },
+        method: 'GET',
+        url: '/api/questions/random'
+      },
       {
         fixture: 'questions.json',
         statusCode: 200
       }
-    ).as('getRandomQuestion')
+      ).as('getRandomQuestion')
+    });
+
+  it('should start the quiz and display the first question', () => {
+    cy.mount(<Quiz />);
+    cy.get('button').contains('Start Quiz').click();
+    cy.get('.card').should('be.visible');
+    cy.get('h2').should('not.be.empty');
   });
 
-  it('shoud render the quiz component', () => {
-    // see: https://on.cypress.io/mounting-react
+  it('should answer questions and complete the quiz', () => {
     cy.mount(<Quiz />);
+    cy.get('button').contains('Start Quiz').click();
+
+    // Answer questions
+    cy.get('button').contains('1').click();
+
+    // Verify the quiz completion
+    cy.get('.alert-success').should('be.visible').and('contain', 'Your score');
   });
 
-
-  it('should render the quiz component with the proper content', () => {
+  it('should restart the quiz after completion', () => {
     cy.mount(<Quiz />);
-    cy.get('h2').should('have.text', 'Quiz Completed');
-    cy.get('span').should('have.text', 'Loading...');
+    cy.get('button').contains('Start Quiz').click();
+
+    // Answer questions
+    cy.get('button').contains('1').click();
+
+    // Restart the quiz
+    cy.get('button').contains('Take New Quiz').click();
+
+    // Verify the quiz is restarted
+    cy.get('.card').should('be.visible');
+    cy.get('h2').should('not.be.empty');
   });
 });
