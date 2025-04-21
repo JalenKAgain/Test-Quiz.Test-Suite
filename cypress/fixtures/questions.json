@@ -1,0 +1,12 @@
+[
+    {
+      "question": "Why don’t Python programmers get bitten?",
+      "answers": [
+        { "text": "Because they handle exceptions!", "isCorrect": true },
+        { "text": "They use anti-venom variables", "isCorrect": false },
+        { "text": "They code with snake charmers", "isCorrect": false },
+        { "text": "Because their code is venom-proof", "isCorrect": false }
+      ]
+    }
+  ]
+  
